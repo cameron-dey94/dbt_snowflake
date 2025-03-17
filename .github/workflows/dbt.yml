@@ -23,6 +23,12 @@ jobs:
       - name: Install dbt
         run: pip install dbt-core
 
+      - name: Set up dbt profile
+        run: |
+          mkdir -p ~/.dbt
+          echo "${{ secrets.DBT_PROFILES }}" > ~/.dbt/profiles.yml
+        shell: bash
+
       - name: Run dbt
         run: dbt run
         env:
