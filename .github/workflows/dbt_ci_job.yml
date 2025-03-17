@@ -45,3 +45,6 @@ jobs:
 
       - name: Lint models
         run: "sqlfluff lint models"
+
+      - name: Format SQL Files (Optional)
+        run: sqlfluff fix models
