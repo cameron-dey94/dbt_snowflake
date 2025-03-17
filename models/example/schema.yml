@@ -2,4 +2,4 @@
 version: 2
 
 models:
-  - name: tb_menu
+  - name: stg_tb_menu
