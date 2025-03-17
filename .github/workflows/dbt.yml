@@ -21,7 +21,7 @@ jobs:
           python-version: '3.8'
 
       - name: Install dbt
-        run: pip install dbt-core
+        run: pip install dbt-core dbt-snowflake
 
       - name: Set up dbt profile
         run: |
@@ -29,7 +29,10 @@ jobs:
           echo "${{ secrets.DBT_PROFILES }}" > ~/.dbt/profiles.yml
         shell: bash
 
+      - name: Verify dbt profile
+        run: cat ~/.dbt/profiles.yml 
+
       - name: Run dbt
         run: dbt run
         env:
-          DBT_PROFILES_DIR: ~/.dbt/profiles.yml
+          DBT_PROFILES_DIR: ~/.dbt
