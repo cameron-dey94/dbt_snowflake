@@ -5,3 +5,15 @@ sources:
       database: tasty_bytes_sample_data
       tables:
         - name: menu
+    
+    - name: tpcds_sf100tcl
+      database: snowflake_sample_date
+      tables:
+        - name: call_center
+        - name: catalog_page
+        - name: catalog_returns
+        - name: catalog_sales
+        - name: customer
+        - name: customer_address
+        - name: customer_demographics
+        - name: date_dim
