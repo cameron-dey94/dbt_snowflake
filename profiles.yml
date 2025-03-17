@@ -4,22 +4,22 @@ dbt_snowflake:
     dev:
       account: SSB74158
       database: dbt_dev
-      password: "{{ env_var('DBT_PASSWORD') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
       role: dbt_role
       schema: dev_cdey
       threads: 4
       type: snowflake
-      user: "{{ env_var('DBT_USER') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
       warehouse: transforming
     prod:
       account: SSB74158
       database: analytics_prod
-      password: "{{ env_var('DBT_PASSWORD') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
       role: dbt_role
       schema: prod
       threads: 4
       type: snowflake
-      user: "{{ env_var('DBT_USER') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
       warehouse: transforming
 
   target: dev
