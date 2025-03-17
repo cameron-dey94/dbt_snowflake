@@ -25,8 +25,9 @@ jobs:
 
       - name: Set up dbt profile
         run: |
-          mkdir -p ~/.dbt
-          echo "${{ secrets.DBT_PROFILES }}" > ~/.dbt/profiles.yml
+          mkdir -p ~/.dbt  # Ensure the directory exists
+          echo -e "${{ secrets.DBT_PROFILES }}" > ~/.dbt/profiles.yml
+          ls -la ~/.dbt  # List contents for debugging
         shell: bash
 
       - name: Verify dbt profile
