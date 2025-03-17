@@ -42,9 +42,10 @@ jobs:
 
       - name: dbt build
         run: dbt build #--full-refresh --profiles-dir ./
+        
+      - name: Format SQL Files (Optional)
+        run: sqlfluff fix models
 
       - name: Lint models
         run: "sqlfluff lint models"
 
-      - name: Format SQL Files (Optional)
-        run: sqlfluff fix models
