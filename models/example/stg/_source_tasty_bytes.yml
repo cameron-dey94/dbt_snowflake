@@ -7,7 +7,7 @@ sources:
         - name: menu
     
     - name: tpcds_sf100tcl
-      database: snowflake_sample_date
+      database: snowflake_sample_data
       tables:
         - name: call_center
         - name: catalog_page
