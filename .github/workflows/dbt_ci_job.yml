@@ -1,4 +1,4 @@
-name: Our first dbt PR job
+name: CI Job
 
 on:
   pull_request:
