@@ -32,4 +32,4 @@ jobs:
       - name: Run dbt
         run: dbt run
         env:
-          DBT_PROFILES_DIR: ~/.dbt
+          DBT_PROFILES_DIR: ~/.dbt/profiles.yml
