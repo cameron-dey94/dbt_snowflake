@@ -3,10 +3,10 @@ name: CI Job
 on:
   pull_request:
     types:
-    - opened
-    - reopened
-    - synchronize
-    - ready_for_review
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
   push:
     branches:
       - '!main'
@@ -20,7 +20,6 @@ jobs:
       SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
       SNOWFLAKE_DB: ${{ secrets.SNOWFLAKE_DB }}
       SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-
 
     steps:
       - name: Checkout Code
@@ -40,12 +39,11 @@ jobs:
       - name: Install dbt dependencies
         run: dbt deps
 
-      - name: dbt build
-        run: dbt build #--full-refresh --profiles-dir ./
-        
-      # - name: Format SQL Files (Optional)
-      #   run: sqlfluff fix models
+      - name: Run dbt build and generate artifacts
+        run: |
+          dbt build --target prod --profiles-dir ./
+          dbt run --target prod --profiles-dir ./  # You could use `dbt run` here if needed
 
-      # - name: Lint models
-      #   run: "sqlfluff lint models"
-
+      - name: Run dbt on modified models with downstream dependencies
+        run: |
+          dbt build --select state:modified+ --target prod --profiles-dir ./  # Run only modified and downstream models
