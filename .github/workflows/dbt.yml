@@ -38,6 +38,9 @@ jobs:
         shell: bash
 
       - name: Run dbt
-        run: dbt run
+        run: |
+          export DBT_PROFILES_DIR="$HOME/.dbt"
+          echo "DBT_PROFILES_DIR is set to: $DBT_PROFILES_DIR"
+          dbt run
         env:
           DBT_PROFILES_DIR: $HOME/.dbt
