@@ -33,6 +33,10 @@ jobs:
       - name: Verify dbt profile
         run: cat ~/.dbt/profiles.yml 
 
+      - name: print profile path
+        run: echo $DBT_PROFILES_DIR
+        shell: bash
+
       - name: Run dbt
         run: dbt run
         env:
